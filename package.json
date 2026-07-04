@@ -1,0 +1,13 @@
+{
+  "name": "avatar-dash-duel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-friendly online multiplayer endless runner for Manan and Kripa.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
