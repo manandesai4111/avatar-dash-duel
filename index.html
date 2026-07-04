@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#61d4ff">
+  <title>Avatar Dash Duel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="rotateHint">Rotate your phone sideways for the best duel view.</div>
+
+  <main class="game-shell">
+    <header class="topbar">
+      <h1>Avatar Dash Duel</h1>
+      <div class="scoreboard" aria-label="Scores">
+        <div class="score-pill p1">
+          <span>Manan</span>
+          <strong id="p1Score">0 m</strong>
+        </div>
+        <div class="score-pill p2">
+          <span>Kripa</span>
+          <strong id="p2Score">0 m</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="stage" aria-label="Avatar Dash Duel game area">
+      <canvas id="gameCanvas" width="960" height="540">
+        Your browser does not support the canvas element.
+      </canvas>
+
+      <div class="overlay" id="startScreen">
+        <div class="overlay-panel">
+          <p class="eyebrow">Online two-player runner</p>
+          <h2>Avatar Dash Duel</h2>
+          <p class="panel-copy">Create a room on one phone, join it on the other, then race Manan vs Kripa in real time.</p>
+
+          <div class="lobby-actions">
+            <button class="primary-action" id="playButton" type="button" disabled>Create Room</button>
+            <div class="join-row">
+              <input id="roomCodeInput" type="text" inputmode="text" maxlength="6" autocomplete="off" placeholder="Room code" aria-label="Room code">
+              <button class="secondary-action" id="joinButton" type="button" disabled>Join</button>
+            </div>
+            <button class="secondary-action practice" id="practiceButton" type="button">Practice on this device</button>
+          </div>
+
+          <p class="connection-status" id="connectionStatus">Connecting to multiplayer server...</p>
+        </div>
+      </div>
+
+      <div class="overlay" id="instructionScreen" hidden>
+        <div class="overlay-panel">
+          <p class="eyebrow" id="roomStatusText">Room</p>
+          <h2 id="roleText">Ready?</h2>
+          <div class="instructions-grid">
+            <div>
+              <strong>Mobile</strong>
+              <span id="mobileInstructionText">Use your highlighted Jump and Slide buttons.</span>
+            </div>
+            <div>
+              <strong>Desktop</strong>
+              <span>Manan: W / S. Kripa: Arrow Up / Arrow Down.</span>
+            </div>
+          </div>
+          <p class="waiting-copy" id="waitingText">Waiting for both players...</p>
+          <button class="primary-action" id="startRaceButton" type="button">Ready</button>
+        </div>
+      </div>
+
+      <div class="overlay" id="gameOverScreen" hidden>
+        <div class="overlay-panel">
+          <p class="eyebrow">Game over</p>
+          <h2 id="winnerText">Winner: Manan</h2>
+          <div class="result-avatars" aria-label="Result animations">
+            <div class="result-avatar-card p1-result">
+              <canvas id="p1ResultCanvas" width="220" height="220" aria-label="Manan result animation"></canvas>
+              <strong>Manan</strong>
+              <span id="p1ResultStatus">Dancing</span>
+            </div>
+            <div class="result-avatar-card p2-result">
+              <canvas id="p2ResultCanvas" width="220" height="220" aria-label="Kripa result animation"></canvas>
+              <strong>Kripa</strong>
+              <span id="p2ResultStatus">Crying</span>
+            </div>
+          </div>
+          <div class="final-scores">
+            <span id="finalP1Score">Manan: 0 m</span>
+            <span id="finalP2Score">Kripa: 0 m</span>
+          </div>
+          <button class="primary-action" id="restartButton" type="button">Ready Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="touch-controls" aria-label="Touch controls">
+    <div class="control-cluster left-controls" aria-label="Player 1 controls">
+      <button class="control-btn jump-btn" data-action="p1Jump" type="button">P1 Jump</button>
+      <button class="control-btn slide-btn" data-action="p1Slide" type="button">P1 Slide</button>
+    </div>
+    <div class="control-cluster right-controls" aria-label="Player 2 controls">
+      <button class="control-btn jump-btn" data-action="p2Jump" type="button">P2 Jump</button>
+      <button class="control-btn slide-btn" data-action="p2Slide" type="button">P2 Slide</button>
+    </div>
+  </nav>
+
+  <script src="game.js"></script>
+</body>
+</html>
